@@ -1,0 +1,26 @@
+<ion-menu [content]="myContent">
+    <ion-content color="primary" class="side">
+        <ion-list class="menu1">
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon name={{p.icon}} item-start></ion-icon>
+                {{p.title}}
+            </button>
+
+            
+
+            <button menuClose ion-item (click)="logOut()">
+                <ion-icon name="power" item-start></ion-icon>
+                Logout
+            </button>
+
+            
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+
+
+
+
+<ion-nav #myContent [root]="rootPage"></ion-nav>

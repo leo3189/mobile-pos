@@ -1,0 +1,35 @@
+page-menu {
+
+    ion-segment {
+        padding: 1px;
+    }
+
+    .cart-buttons {
+        margin: 10px;
+        float: right;
+    }
+
+    .expandableHeader {
+        background-color: #3b5998;
+        transition: 0.2s linear;
+        
+    }
+
+    .buttonColor {
+        background-color: generateColor();
+    }
+
+    .qtyColor {
+        color: #3b5998;
+    }
+
+    ion-scroll {
+        white-space: nowrap;
+        height: 250px;
+    }
+
+    .selectedHighLight {
+        background-color: #3b5998;
+        color: white;
+    }
+}

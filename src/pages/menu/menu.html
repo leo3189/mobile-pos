@@ -1,0 +1,90 @@
+<!--
+  Generated template for the MenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle color="main">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Order
+    </ion-title>
+    <ion-buttons right >
+      <button ion-button icon-only (click)="viewCart()" [disabled]="itemsInCart.length == 0">
+        <ion-badge *ngIf="itemsInCart.length" [@cartBadge]="cartBadgeState">{{ getTotalCartQty() }}</ion-badge>
+        <ion-icon [@cartBadge]="cartBadgeState" name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar 
+      placeholder="Search all items">
+    </ion-searchbar>
+    <ion-buttons right>
+      <button ion-button (click)="scan()" >
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div>
+    <ion-scroll scrollX="true" style="height: 40px; width: auto; background-color: white">
+      <table>
+        <tr>
+          <td text-center style="padding: 8px" *ngFor="let category of menuCategories" [class.selectedHighLight]="isSelected(category)">
+            <div style="width: 70px;" (click)="viewMenuItems(category)">
+              {{ category.name }}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </div>
+
+  <!-- <div padding-top ion-fixed style="width: 100%; background-color: white">
+    <ion-segment [(ngModel)]="selectionCategories" *ngFor="let i of rows">
+      <ng-container *ngFor="let category of menuCategories | slice:(i*segmentsPerRow):(i+1)*segmentsPerRow">
+        <ion-segment-button 
+          (ionSelect)="viewMenuItems(category)"
+          value="{{ category.name }}">
+            {{ category.name }}
+        </ion-segment-button>
+      </ng-container>
+    </ion-segment>
+  </div> -->
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list >
+    <ion-item *ngFor="let menuItem of menuItems" 
+      [@addButton]="menuItem.addButtonState" 
+      (@addButton.done)="addToCartFinished(menuItem)"
+      (click)="addToCart(menuItem)">
+        <ion-label>
+          {{ menuItem.name }}
+        </ion-label>           
+        <div padding-right item-content *ngIf="getQuantity(menuItem)">
+          <p class="qtyColor" >{{ getQuantity(menuItem) }}x </p>
+        </div> 
+        <div item-content>
+          <p>$ {{ menuItem.price | number : '1.2-2'}}</p>
+        </div>       
+    </ion-item>
+  </ion-list>
+
+  <div padding style="width: 100%; text-align: center" *ngIf="categories.length == 0">
+    <h2>You don't have items yet</h2>
+    <p>Go to items menu to add an item</p>
+    <button ion-button (click)="goToMenuSetting()">Add Menu Item</button>
+  </div>
+
+</ion-content>
