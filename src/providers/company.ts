@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CompanyProvider {
 
-  private url: string = "http://3.17.144.10:8081/api";
+  private url: string = "";
   private END_POINT: string = 'Company';
 
   constructor(
