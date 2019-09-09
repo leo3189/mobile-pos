@@ -8,7 +8,7 @@ import { LoginProvider } from './login';
 @Injectable()
 export class Api {
 
-  private url: string = 'http://3.17.144.10:8081/api';
+  private url: string = '';
   private timeOut: number = 15000;
   private companyID: string;
     
@@ -16,7 +16,6 @@ export class Api {
     public http: Http,
     private login: LoginProvider) {
     
-    // this.companyID = 'A9645005067347BE831C1129466C3224';
     
   }
 
