@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EmailProvider {
 
-    private url: string = "http://3.17.144.10:8081/api";
+    private url: string = "";
 
     constructor(
         public http: Http) {
