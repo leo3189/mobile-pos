@@ -13,7 +13,7 @@ import 'rxjs/add/operator/timeout';
 @Injectable()
 export class LoginProvider {
 
-  private url: string = "http://ibs.abcpos.com:8081/api";
+  private url: string = "";
   private END_POINT = 'User/Login';
   private companyID: string;
 
